@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice MedBot Intake Ticket</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; }
+        label { display: block; margin-top: 10px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+        #start-voice { margin-top: 20px; padding: 12px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; font-size: 1.1em; }
+        #ticket-output { border: 1px solid #007bff; padding: 15px; margin-top: 30px; text-align: center; background-color: #e9f5ff; }
+        #qr-code-container { margin-top: 15px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>🏥 Voice MedBot Intake</h1>
+    <button id="start-voice">🎤 Start Voice Intake</button>
+    
+    <p id="message">Click 'Start Voice Intake' and allow microphone access to begin.</p>
+    
+    <form id="intake-form">
+        <label for="name">Patient Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="dob">Date of Birth (YYYY-MM-DD):</label>
+        <input type="text" id="dob" name="dob" placeholder="Example: nineteen ninety two february fifteenth" required>
+
+        <label for="reason">Reason for Arrival (Chief Complaint):</label>
+        <textarea id="reason" name="reason" rows="3" required></textarea>
+
+        <button type="submit" style="display:none;">Generate QR Ticket</button> 
+    </form>
+
+    <div id="ticket-output" style="display:none;">
+        <h2>Your Digital Intake Ticket</h2>
+        <p><strong>Ticket ID:</strong> <span id="output-id"></span></p>
+        <p><strong>Name:</strong> <span id="output-name"></span></p>
+        <p><strong>Reason:</strong> <span id="output-reason"></span></p>
+        <div id="qr-code-container"></div>
+        <p>Present this QR code to the triage staff.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
